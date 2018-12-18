@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Response;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class HomeController
 {
@@ -11,7 +11,7 @@ class HomeController
     {
     }
 
-    public function index(Request $request, Response $response)
+    public function index(RequestInterface $request, ResponseInterface $response)
     {
         $response->getBody()->write('Home');
         return $response;

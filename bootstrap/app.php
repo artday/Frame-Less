@@ -23,5 +23,3 @@ require_once base_path('routes/web.php');
 $response = $route->dispatch(
     $container->get('request'), $container->get('response')
 );
-
-$response = $response->respond();

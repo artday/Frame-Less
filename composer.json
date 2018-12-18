@@ -13,6 +13,7 @@
     "zendframework/zend-diactoros": "^1.8",
     "twig/twig": "^1.36",
     "symfony/var-dumper": "^3.4",
-    "illuminate/database": "^5.4"
+    "illuminate/database": "^5.4",
+    "vlucas/valitron": "^1.4"
   }
 }

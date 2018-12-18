@@ -5,6 +5,7 @@
     }
   },
   "require": {
-    "vlucas/phpdotenv": "^2.5"
+    "vlucas/phpdotenv": "^2.5",
+    "league/route": "^3.1"
   }
 }

@@ -1,8 +1,8 @@
 <?php
 
 use League\Container\Container;
-use League\Container\ReflectionContainer;
 use App\Providers\ConfigServiceProvider;
+use League\Container\ReflectionContainer;
 
 $container = new Container;
 $container->delegate(new ReflectionContainer);

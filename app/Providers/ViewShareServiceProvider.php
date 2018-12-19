@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Providers;
 
 use App\Auth\Auth;
@@ -13,9 +14,7 @@ class ViewShareServiceProvider extends AbstractServiceProvider implements Bootab
     /**
      * @var array
      */
-    protected $provides = [
-        //
-    ];
+    protected $provides = [];
 
     /**
      * Use the register method to register items with the container via the

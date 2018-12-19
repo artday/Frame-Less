@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Views;
 
 use Twig_Environment;

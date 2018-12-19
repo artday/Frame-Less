@@ -1,0 +1,19 @@
+<div class="row justify-content-center">
+    <div class="col-6">
+        {% if flash.has('error') %}
+            <div class="alert alert-danger">
+                {{ flash.get('error') }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        {% if flash.has('success') %}
+            <div class="alert alert-success">
+                {{ flash.get('success') }}
+            </div>
+        {% endif %}
+    </div>
+</div>

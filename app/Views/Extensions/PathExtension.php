@@ -2,9 +2,9 @@
 
 namespace App\Views\Extensions;
 
-use League\Route\RouteCollection;
 use Twig_Extension;
 use Twig_SimpleFunction;
+use League\Route\RouteCollection;
 
 class  PathExtension extends Twig_Extension
 {

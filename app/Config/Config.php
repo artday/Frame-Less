@@ -61,5 +61,4 @@ class Config
         $this->cache[$key] = $value;
         return $value;
     }
-
 }

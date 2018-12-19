@@ -3,22 +3,22 @@
 namespace App\Controllers;
 
 use App\Views\View;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use App\Cookie\CookieJar;
+use Psr\Http\Message\ServerRequestInterface;
 
 class HomeController
 {
     protected $view;
+    private $cookie;
 
-    public function __construct(View $view)
+    public function __construct(View $view, CookieJar $cookie)
     {
         $this->view = $view;
+        $this->cookie = $cookie;
     }
 
-    public function index(RequestInterface $request, ResponseInterface $response)
+    public function index(ServerRequestInterface $request, $response)
     {
-        return $this->view->render($response, 'home.twig', [
-            'name' => 'Guest'
-        ]);
+        return $this->view->render($response, 'home.twig');
     }
 }

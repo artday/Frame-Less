@@ -1,6 +1,5 @@
 ## FrameLess Framework
-<p>It's not a framework, it's a project structure built from the ground up. 
-Routing, service providers, powerful database integration, authentication, 
+<p>Project structure includes: routing, service providers, powerful database integration, authentication, 
 validation, flash messages and so much more.</p>
 
 ## Server Requirements

@@ -4,10 +4,17 @@ use Dotenv\Dotenv;
 use App\Views\View;
 use App\Exceptions\Handler;
 use App\Session\SessionStore;
-use League\Route\RouteCollection;
 use Dotenv\Exception\InvalidPathException;
+use App\Core\Framework\Route\RouteCollection;
 
 session_start();
+
+// declare function base_path() outside helpers
+if (!function_exists('base_path')) {
+    function base_path($path = '') {
+        return __DIR__ . '/..//' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+}
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -24,6 +31,9 @@ $route = $container->get(RouteCollection::class);
 require_once base_path('bootstrap/middleware.php');
 
 require_once base_path('routes/web.php');
+
+// must require helpers after routes because route(name) method requires global $route
+require_once base_path('app/helpers.php');
 
 try {
     $response = $route->dispatch(

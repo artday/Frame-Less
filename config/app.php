@@ -6,9 +6,10 @@ return [
 
     'providers' => [
         'App\Providers\AppServiceProvider',
+        'App\Providers\SessionServiceProvider',
+        'App\Providers\TranslationServiceProvider',
         'App\Providers\ViewServiceProvider',
         'App\Providers\DatabaseServiceProvider',
-        'App\Providers\SessionServiceProvider',
         'App\Providers\HashServiceProvider',
         'App\Providers\AuthServiceProvider',
         'App\Providers\FlashServiceProvider',

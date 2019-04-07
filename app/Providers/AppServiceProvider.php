@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\SapiEmitter;
-use Zend\Diactoros\ServerRequestFactory;
 
-use League\Route\RouteCollection;
+use App\Core\Framework\Route\RouteCollection;
+use App\Core\Framework\Request\ServerRequestFactory;
+
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class AppServiceProvider extends AbstractServiceProvider

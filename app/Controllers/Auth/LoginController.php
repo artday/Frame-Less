@@ -6,31 +6,26 @@ use App\Auth\Auth;
 use App\Views\View;
 use App\Session\Flash;
 use App\Controllers\Controller;
-use League\Route\RouteCollection;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
+use App\Core\Framework\Route\RouteCollection;
+use Illuminate\Translation\Translator;
 
 class LoginController extends Controller
 {
     protected $auth;
-    protected $view;
-    protected $route;
-    protected $flash;
 
-    public function __construct(View $view, Auth $auth, RouteCollection $route, Flash $flash)
+    public function __construct(View $view, Auth $auth, RouteCollection $route, Flash $flash, Translator $translator)
     {
+        parent::__construct($view, $route, $flash, $translator);
         $this->auth = $auth;
-        $this->view = $view;
-        $this->route = $route;
-        $this->route = $route;
-        $this->flash = $flash;
     }
 
-    public function index($request, $response)
+    public function index(ServerRequest$request, $response)
     {
         return $this->view->render($response, 'auth/login.twig');
     }
 
-    public function signin(ServerRequestInterface $request, $response)
+    public function signin(ServerRequest $request, $response)
     {
         $data = $this->validate($request, [
             'email' => ['required', 'email'],
@@ -41,7 +36,7 @@ class LoginController extends Controller
 
         if (!$attempt) {
 
-            $this->flash->now('error', 'Could not sign you in with those details.');
+            $this->flash->error('Could not sign you in with those details.');
 
             return redirect($request->getUri()->getPath());
         }

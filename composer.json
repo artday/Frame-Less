@@ -2,10 +2,7 @@
   "autoload": {
     "psr-4": {
       "App\\": "app"
-    },
-    "files": [
-      "app/helpers.php"
-    ]
+    }
   },
   "require": {
     "vlucas/phpdotenv": "^2.5",
@@ -14,6 +11,7 @@
     "twig/twig": "^1.36",
     "symfony/var-dumper": "^3.4",
     "illuminate/database": "^5.4",
-    "vlucas/valitron": "^1.4"
+    "vlucas/valitron": "^1.4",
+    "illuminate/translation": "^5.4"
   }
 }

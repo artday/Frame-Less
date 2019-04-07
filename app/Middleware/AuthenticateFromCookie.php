@@ -5,7 +5,7 @@ namespace App\Middleware;
 use Exception;
 use App\Auth\Auth;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
 
 class AuthenticateFromCookie
 {
@@ -16,7 +16,7 @@ class AuthenticateFromCookie
         $this->auth = $auth;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(ServerRequest $request, ResponseInterface $response, callable $next)
     {
         if ($this->auth->check()) {
             return $next($request, $response);

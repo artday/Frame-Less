@@ -5,7 +5,7 @@ namespace App\Middleware;
 use App\Views\View;
 use App\Session\SessionStore;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
 
 class ShareValidationErrors
 {
@@ -18,7 +18,7 @@ class ShareValidationErrors
         $this->session = $session;
     }
     
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(ServerRequest $request, ResponseInterface $response, callable $next)
     {
         $this->view->share([
             'errors' => $this->session->get('errors', []),

@@ -4,7 +4,7 @@ namespace App\Middleware;
 
 use App\Session\SessionStore;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
 
 class ClearValidationErrors
 {
@@ -15,7 +15,7 @@ class ClearValidationErrors
         $this->session = $session;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(ServerRequest $request, ResponseInterface $response, callable $next)
     {
         $next = $next($request, $response);
         $this->session->clear('errors', 'old');

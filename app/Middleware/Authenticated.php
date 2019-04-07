@@ -8,7 +8,7 @@ namespace App\Middleware;
 
 use App\Auth\Auth;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
 
 class Authenticated
 {
@@ -19,7 +19,7 @@ class Authenticated
         $this->auth = $auth;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(ServerRequest $request, ResponseInterface $response, callable $next)
     {
         if (!$this->auth->check()) {
             $response = redirect(route('auth.login'));

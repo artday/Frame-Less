@@ -5,7 +5,7 @@ namespace App\Middleware;
 use App\Security\Csrf;
 use App\Exceptions\CsrfTokenException;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Core\Framework\Request\ServerRequest;
 
 class CsrfGuard
 {
@@ -16,7 +16,7 @@ class CsrfGuard
         $this->csrf = $csrf;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(ServerRequest $request, ResponseInterface $response, callable $next)
     {
         if (!$this->requestRequireProtection($request)) {
             return $next($request, $response);
@@ -29,12 +29,12 @@ class CsrfGuard
         return $next($request, $response);
     }
 
-    protected function requestRequireProtection(ServerRequestInterface $request)
+    protected function requestRequireProtection(ServerRequest $request)
     {
         return in_array($request->getMethod(), ['POST', 'PUT', 'DELETE', 'PATCH']);
     }
 
-    protected function getTokenFromRequest(ServerRequestInterface $request)
+    protected function getTokenFromRequest(ServerRequest $request)
     {
         $token = $request->getParsedBody()[$this->csrf->key()];
         return $token ? $token : null;

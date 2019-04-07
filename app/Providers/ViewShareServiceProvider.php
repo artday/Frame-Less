@@ -6,6 +6,7 @@ use App\Auth\Auth;
 use App\Views\View;
 use App\Session\Flash;
 use App\Security\Csrf;
+use Illuminate\Translation\Translator;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 
@@ -43,6 +44,8 @@ class ViewShareServiceProvider extends AbstractServiceProvider implements Bootab
             'auth' => $container->get(Auth::class),
             'flash' => $container->get(Flash::class),
             'csrf' => $container->get(Csrf::class),
+            'backPath' => $container->get('request')->getReferer(),
+            'translator' => $container->get(Translator::class)
         ]);
     }
 }

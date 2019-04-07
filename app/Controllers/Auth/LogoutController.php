@@ -16,6 +16,6 @@ class LogoutController extends Controller
     public function logout($request, $response)
     {
         $this->auth->logout();
-        return redirect('/');
+        return redirect(route('home'));
     }
 }

@@ -16,7 +16,7 @@ class Csrf
 
     public function key()
     {
-        return '_token';
+        return 'csrf-token';
     }
 
     public function token()

@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * TODO: replace ServerRequestInterface with ServerRequest
+ * */
+
 namespace App\Middleware;
 
 use App\Auth\Auth;
@@ -18,7 +22,7 @@ class Authenticated
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
         if (!$this->auth->check()) {
-            $response = redirect('/');
+            $response = redirect(route('auth.login'));
         }
         return $next($request, $response);
     }

@@ -2,7 +2,6 @@
 
 namespace App\Session;
 
-
 class Flash
 {
     protected $session;
@@ -49,5 +48,24 @@ class Flash
     protected function clear()
     {
         $this->session->clear('flash');
+    }
+
+    public function success($value)
+    {
+        $this->now('success', $value);
+    }
+
+    public function error($value)
+    {
+        $this->now('error', $value);
+    }
+
+    public function info($value)
+    {
+        $this->now('info', $value);
+    }
+    public function warning($value)
+    {
+        $this->now('warning', $value);
     }
 }

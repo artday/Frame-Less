@@ -22,6 +22,10 @@ class Config
 
     public function get($key, $default = null)
     {
+        if (is_array($key)){
+            return $this->set($key);
+        }
+
         if ($this->existsInCache($key)) {
             return $this->fromCache($key);
         }
@@ -31,6 +35,16 @@ class Config
         return $value
             ? $this->addToCache($key, $value)
             : $this->addToCache($key, $default);
+    }
+
+    /*TODO: Delete setter if not needed anymore
+     * */
+    protected function set(array $params)
+    {
+        foreach($params as $key => $val){
+            $this->addToCache($key, $val);
+        }
+        return null;
     }
 
     protected function existsInCache($key)

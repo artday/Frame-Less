@@ -3,7 +3,7 @@
 validation, flash messages and so much more.</p>
 
 ## Server Requirements
-<p>PHP >= 5.6 </p>
+<p>PHP >= 5.6</p>
 
 ## Routing
 <p><pre>$route->get('foo', function () {

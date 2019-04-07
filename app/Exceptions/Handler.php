@@ -52,9 +52,22 @@ class Handler
         return $this->view->render($this->response, 'errors/csrf.twig');
     }
 
+    protected function handleNotFoundException()
+    {
+        return $this->view->render($this->response, 'errors/404.twig');
+    }
+
+    /**
+     * @param Exception $e
+     * @return ResponseInterface
+     * @throws Exception
+     */
     protected function unhandleException(Exception $e)
     {
-        throw $e;
+        if(env('APP_DEBUG')){
+            throw $e;
+        }
+        return $this->handleNotFoundException();
     }
 
 }

@@ -6,7 +6,7 @@ use App\Views\View;
 use App\Models\User;
 use App\Auth\Hashing\Hasher;
 use App\Controllers\Controller;
-use League\Route\RouteCollection;
+use App\Core\Framework\Route\RouteCollection;
 
 class RegisterController extends Controller
 {

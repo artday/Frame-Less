@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Rules\IssetRule;
+use App\Rules\UniqueRule;
 use Valitron\Validator;
 use App\Rules\ExistsRule;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -35,5 +37,15 @@ class ValidationServiceProvider extends AbstractServiceProvider implements Boota
             $rule = new ExistsRule();
             return $rule->validate($field, $value, $params, $fields);
         }, 'is already in use');
+
+        Validator::addRule('unique', function ($field, $value, $params, $fields) {
+            $rule = new UniqueRule();
+            return $rule->validate($field, $value, $params, $fields);
+        }, 'must be unique');
+
+        Validator::addRule('isset', function ($field, $value, $params, $fields) {
+            $rule = new IssetRule();
+            return $rule->validate($field, $value, $params, $fields);
+        }, 'must exists');
     }
 }

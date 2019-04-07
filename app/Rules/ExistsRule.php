@@ -6,6 +6,6 @@ class ExistsRule
 {
     public function validate($field, $value, $params, $fields)
     {
-        return $params[0]::where($field, '=', $value)->first() === null;
+        return $params[0]::where($params[1] ? $params[1] : $field, '=', $value)->first() === null;
     }
 }
